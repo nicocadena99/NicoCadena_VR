@@ -1,0 +1,88 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      
+      <a-assets>
+        <a-asset-item id="camera" src="3ds/camera.gltf"></a-asset-item>
+      </a-assets>
+      
+      <a-entity position="-10 0.8 -9" rotation="0 0 0" gltf-model="#camera" scale="1 1 1"
+      animation="property: rotation; to: 0 360 0; loop: true; dur: 8000"
+      text="value: Hello, A-Frame!; color: #00ff00"  position="-8 4 -11"  scale="1.5 1.5 1.5"></a-entity>
+
+      <a-assets>
+        <a-asset-item id="headset" src="3ds/Headset.gltf"></a-asset-item>
+      </a-assets>
+      
+      <a-entity position="0 3 -18" rotation="0 0 0" gltf-model="#headset" scale="0.5 0.5 0.5" 
+        animation="property: rotation; to: 360 360 360; dir: alternate; loop: true; dur: 4000">       
+      </a-entity>
+
+      <a-assets>
+        <a-asset-item id="mario" src="3ds/mario.gltf"></a-asset-item>
+      </a-assets>
+      
+      <a-entity position="10 0.75 -27" rotation="0 0 0" gltf-model="#mario" scale="2.5 2.5 2.5" 
+      animation="property: rotation; to: 0 360 0; loop: true; dur: 6000"></a-entity>
+      
+
+
+      <a-sound id="fondo" material="opacity:0.5" geometry="primitive:sphere" position="0 0 50" src="src: url(AUDIOS/sci_fi_music.wav)" autoplay="true" volume="21"></a-sound>
+     
+      <a-sound id="sonido1" material="opacity:0.5" geometry="primitive:sphere" position="0 8 -18" src="src: url(AUDIOS/interactividad.wav)" autoplay="false" volume="10"></a-sound>
+
+      <a-sound id="pr_audiovisual" material="opacity:0.5" geometry="primitive:sphere" position="-10 6 -9" src="src: url(AUDIOS/pr_audiovisual.wav)" autoplay="false" volume="10"></a-sound>
+
+      <a-sound id="sonido3" material="opacity:0.5" geometry="primitive:sphere" position="10 12 -27" src="src: url(AUDIOS/animación.wav)" autoplay="false" volume="10"></a-sound>
+
+      <a-light type="ambient" color="#EDE6E3" intensity="0.7"></a-light>
+      
+      <a-entity environment="preset: contact"></a-entity>
+
+      <a-camera>
+        <a-cursor> </a-cursor>
+      </a-camera>
+    </a-scene>
+
+    <script> 
+      var pr_audiovisual = document.querySelector('#pr_audiovisual');
+      pr_audiovisual.addEventListener('mouseenter'), function() {
+        console.log("play");
+        pr_audiovisual.components.sound.playSound();
+      });
+        pr_audiovisual.addEventListener('mouseleave'), function() {
+        console.log("pause");
+        pr_audiovisual.components.sound.pauseSound();
+      });
+
+      var sonido1 = document.querySelector('#sonido1');
+      sonido1.addEventListener('mouseenter'), function() {
+        console.log("play");
+        sonido1.components.sound.playSound();
+      });
+        sonido1.addEventListener('mouseleave'), function() {
+        console.log("pause");
+        sonido1.components.sound.pauseSound();
+      });
+
+      var sonido3 = document.querySelector('#sonido3');
+      pr_audiovisual.addEventListener('mouseenter'), function() {
+        console.log("play");
+        sonido3.components.sound.playSound();
+      });
+        sonido3.addEventListener('mouseleave'), function() {
+        console.log("pause");
+        sonido3.components.sound.pauseSound();
+      });
+
+
+    </script>
+
+
+
+  </body>
+</html>
